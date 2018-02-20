@@ -1,0 +1,34 @@
+<div>
+	<h1 class="title intro-title text-center">
+    List@ para probar tus conocimientos?
+  </h1>
+  <div class="container">
+  <div class="notification">
+    Este sitio ha sido creado para ayudarte a repasar tus conocimientos mientras juegas 😎
+  </div>
+
+  <br>
+
+  <div>
+  	<div class="box" v-for="test in tests">
+		  <article class="media">
+		    <div class="media-left">
+		      <figure class="image is-64x64" style="background-color: teal">
+		      </figure>
+		    </div>
+		    <div class="media-content">
+		      <div class="content">
+		        <p>
+		          <router-link :to="{ name: 'test', params: { id: test.id } }"><strong>[[ test.name ]]</strong></router-link><br>
+		          por: <small> [[ test.author ? ('@' + test.author_display) : '' ]]</small>
+		        </p>
+		      </div>
+		    </div>
+		  </article>
+		</div>
+
+  </div>
+
+</div>
+</div>
+

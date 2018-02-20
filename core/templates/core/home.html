@@ -1,0 +1,11 @@
+{% extends "core/layout.html" %}
+
+{% block content %}
+
+<transition>
+  <keep-alive>
+    <router-view></router-view>
+  </keep-alive>
+</transition>
+
+{% endblock %}

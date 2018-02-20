@@ -1,0 +1,37 @@
+<div>
+	<h1 class="title intro-title text-center">
+    [[ test.name ]] 😁 <a class="button is-primary" v-if="!isActive" @click="isActive=true">Quiero intentarlo!</a>
+    <span v-if="isRight === true">Es correcto!</span>
+    <span v-if="isRight === false">Oops!</span>
+    <span v-if="finished === true">baia baia tu puntaje es [[ questions.length - errors ]] / [[ questions.length ]]</span>
+  </h1>
+  <div class="container">
+  <br>
+
+  <template v-if="loadingQuestions">
+  	Cargando...
+  </template>
+  <template v-else-if="questions.length">
+  	<template v-if="isActive">
+  		<article class="message is-primary">
+			  <div class="message-body">
+			  	[[ currentQuestion.title ]]
+			  </div>
+			</article>
+			<div class="control">
+			  <label v-for="answer in currentQuestion.answer_set" class="radio">
+			    <input type="radio" v-model="response" :value="answer">
+			  	[[ answer.content ]]
+			  </label><br>
+			</div>
+	  	<a v-if="!finished" class="button is-link is-rounded" @click="checkResponse(response)">Responder</a>
+	  	<a v-if="finished" class="button is-info is-active" href="/">Regresar a la lista de tests</a>
+	  	<a v-if="finished" class="button is-info is-warning" @click="location.reload()">Esto no puede quedar así!</a>
+  	</template>
+  </template>
+  <template v-else>
+  	Este Test aun no tiene preguntas :)
+  </template>
+</div>
+</div>
+

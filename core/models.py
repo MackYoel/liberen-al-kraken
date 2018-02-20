@@ -5,13 +5,13 @@ from taggit.managers import TaggableManager
 
 class Question(models.Model):
 
-    tittle = models.TextField()
+    title = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     tags = TaggableManager(blank=True)
 
     def __str__(self):
-        return self.tittle[:20]
+        return self.title[:20]
 
 
 class Answer(models.Model):
@@ -26,9 +26,21 @@ class Answer(models.Model):
 
 class Test(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    score = models.IntegerField()
+    name = models.CharField(max_length=200)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     questions = models.ManyToManyField(Question)
 
     def __str__(self):
-        return f'{self.user.username} - [{self.score}] pts'
+        return f'{self.name}'
+
+
+class UserTest(models.Model):
+
+    test = models.ForeignKey(Test, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    score = models.IntegerField()
+    start_date = models.DateTimeField(auto_now_add=True)
+    end_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.test.name} - {self.user.username} - [{self.score}] pts'
