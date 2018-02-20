@@ -38,7 +38,11 @@ const TestView = Vue.component('TestView', {
     },
 
     checkResponse: function (response) {
+      if (Object.keys(response).length === 0) {
+        return
+      }
       this.isRight = response.is_right
+      response = {}
       const _this = this
       setTimeout(() => {
         if ((this.questionsIndex + 1) >= this.questions.length) {

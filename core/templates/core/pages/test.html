@@ -1,9 +1,10 @@
 <div>
 	<h1 class="title intro-title text-center">
     [[ test.name ]] 😁 <a class="button is-primary" v-if="!isActive" @click="isActive=true">Quiero intentarlo!</a>
-    <span v-if="isRight === true">Es correcto!</span>
-    <span v-if="isRight === false">Oops!</span>
-    <span v-if="finished === true">baia baia tu puntaje es [[ questions.length - errors ]] / [[ questions.length ]]</span>
+    <a v-if="finished" class="button is-info is-active" v-if="!isActive" href="/#/">Regresar a la lista de tests</a>
+    <span v-if="isRight === true" style="color: #2bd82b">Es correcto!</span>
+    <span v-if="isRight === false" style="color: #e6264c">Oops!</span>
+    <span v-if="finished === true" style="color: #6531ff">baia baia tu puntaje es [[ questions.length - errors ]] / [[ questions.length ]]</span>
   </h1>
   <div class="container">
   <br>
