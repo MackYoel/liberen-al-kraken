@@ -18,7 +18,10 @@ class TestSerializer(serializers.ModelSerializer):
         }
 
     def get_author_display(self, obj):
-        return obj.author.username
+        if obj.author:
+            return obj.author.username
+
+        return 'Anonimo'
 
 
 class AnswerSerializer(serializers.ModelSerializer):
