@@ -25,7 +25,7 @@
 			  	[[ answer.content ]]
 			  </label><br>
 			</div>
-	  	<a v-if="!finished" class="button is-link is-rounded" @click="checkResponse(response)">Responder</a>
+	  	<a v-if="!finished" class="button is-link is-rounded" @click="checkResponse(response.is_right); response=null">Responder</a>
 	  	<a v-if="finished" class="button is-info is-active" href="/">Regresar a la lista de tests</a>
 	  	<a v-if="finished" class="button is-info is-warning" @click="location.reload()">Esto no puede quedar así!</a>
   	</template>

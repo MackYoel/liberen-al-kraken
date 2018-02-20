@@ -37,18 +37,16 @@ const TestView = Vue.component('TestView', {
       })
     },
 
-    checkResponse: function (response) {
-      if (Object.keys(response).length === 0) {
-        return
-      }
-      this.isRight = response.is_right
-      response = {}
+    checkResponse: function (isRight) {
+      if (isRight === null || isRight === undefined) { return; }
+      
+      this.isRight = isRight
       const _this = this
       setTimeout(() => {
         if ((this.questionsIndex + 1) >= this.questions.length) {
           this.finished = true
           this.isRight = null
-          if (!response.is_right) {
+          if (!isRight) {
             this.errors += 1
           }
           return
@@ -56,7 +54,7 @@ const TestView = Vue.component('TestView', {
 
         this.isRight = null
         this.questionsIndex += 1
-        if (!response.is_right) {
+        if (!isRight) {
           this.errors += 1
         }
 
