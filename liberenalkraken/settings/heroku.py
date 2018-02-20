@@ -13,3 +13,5 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 WHITENOISE_STATIC_PREFIX = STATIC_URL
 
 STATIC_URL = os.environ.get('DJANGO_STATIC_HOST', STATIC_URL)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
