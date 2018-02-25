@@ -20,6 +20,40 @@
         display: block;
         margin:0;
       }
+      .answer{
+        padding: 1em;
+        font-weight: 400;
+        max-width: 800px;
+        border: 1px solid #ddd;
+        user-select: none;
+      }
+      .answer:hover{
+        cursor: pointer;
+        background-color: #e4deff;
+      }
+      .right, .right:hover{
+        background-color: #e2f6e5;
+      }
+      .wrong, .wrong:hover{
+        background-color: #fcf6f6;
+      }
+      .complement{
+        padding: 1em;
+        font-weight: 400;
+        max-width: 800px;
+        user-select: none;
+        margin-bottom: 1em;
+        border-radius: 15px;
+        background: #e2f6e5;
+      }
+      .question, .answers{
+        border: 1px solid gray;
+        padding: 1em
+      }
+      .answers textarea{
+        width: 80%;
+        height: 100px;
+      }
     </style>
   </head>
   <body>
@@ -36,9 +70,13 @@
   <script type="text/x-template" id="test-view">
     {% include "core/pages/test.html" %}
   </script>
+  <script type="text/x-template" id="quiz-add-view">
+    {% include "core/pages/quiz_add_view.html" %}
+  </script>
 
   <script src="{% static 'core/components/home.js' %}"></script>
   <script src="{% static 'core/components/test.js' %}"></script>
+  <script src="{% static 'core/components/quiz-add.js' %}"></script>
   <script src="{% static 'core/app.js' %}"></script>
   </body>
 </html>

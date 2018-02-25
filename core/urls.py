@@ -11,6 +11,7 @@ router.register('tests', api.TestViewSet, base_name='api_test')
 
 apipatterns = router.urls + [
     path('tests/<int:pk>/questions/', api.QuestionList.as_view()),
+    path('new-quiz/', api.NewQuiz.as_view()),
 ]
 
 urlpatterns = [

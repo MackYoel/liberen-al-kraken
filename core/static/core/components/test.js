@@ -3,16 +3,15 @@ const TestView = Vue.component('TestView', {
   delimiters: ['[[', ']]'],
   data: function () {
   	return {
+      answer: {},
       test: {},
       response: {},
       questions: [],
-      userAnswers: [],
-      isActive: false,
-      isRight: null,
-      finished: false,
+      errors: 0,
       questionsIndex: 0,
       loadingQuestions: true,
-      errors: 0
+      isActive: false,
+      finished: false
   	}
   },
   mounted: function () {
@@ -37,36 +36,34 @@ const TestView = Vue.component('TestView', {
       })
     },
 
-    checkResponse: function (isRight) {
-      if (isRight === null || isRight === undefined) { return; }
-      
-      this.isRight = isRight
-      const _this = this
-      setTimeout(() => {
-        if ((this.questionsIndex + 1) >= this.questions.length) {
-          this.finished = true
-          this.isRight = null
-          if (!isRight) {
-            this.errors += 1
-          }
-          return
-        }
-
-        this.isRight = null
+    nextQuestion: function () {
+      if (this.isOver) {
+        this.finished = true
+        this.answer = {}
+      } else {        
         this.questionsIndex += 1
-        if (!isRight) {
-          this.errors += 1
-        }
+        this.answer = {}
+      }
+    },
 
-
-      }, 1000)
+    checkResponse: function (answer) {
+      if (!this.finished && !this.answerExists) {
+        this.answer = answer
+        if (!this.answer.is_right) { this.errors += 1 }
+      }
     }
+
   },
   computed: {
     currentQuestion: function () {
       return this.questions[this.questionsIndex]
+    },
+    isOver: function () {
+      return (this.questionsIndex + 1) >= this.questions.length
+    },
+    answerExists: function () {
+      return Object.keys(this.answer).length !== 0
     }
-
   }
 
 })

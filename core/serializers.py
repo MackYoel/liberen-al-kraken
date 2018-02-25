@@ -37,4 +37,4 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Question
-        fields = ('id', 'title', 'answer_set')
+        fields = ('id', 'title', 'answer_set', 'complement')

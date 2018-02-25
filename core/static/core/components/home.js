@@ -6,6 +6,13 @@ const HomeView = Vue.component('HomeView', {
   		tests: []
   	}
   },
+  watch: {
+    '$route.name' () {
+      if (this.$route.name) {
+        this.fetchTests()
+      }
+    }
+  },
   mounted: function () {
   	this.fetchTests()
   },

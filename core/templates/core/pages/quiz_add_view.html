@@ -1,0 +1,75 @@
+<div>
+	<h1 class="title intro-title text-center">
+    Nuevo Quiz 😁
+  </h1>
+  <div class="container">
+  <br>
+
+  <form>
+    <strong class="has-text-danger">[[ this.errors ]]</strong>
+    <div class="field">
+      <label class="label">Nombre</label>
+      <div class="control">
+        <input class="input" v-model="quiz.name" placeholder="cuanto sabes sobre..." required="">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="field has-addons">
+      <div class="control" style="width: 100%">
+        <input class="input" v-model="newQuestion.title" placeholder="Pregunta..." @keyup.enter="addQuestion">
+      </div>
+      <div class="control">
+        <a class="button is-info" @click="addQuestion">
+          Agregar pregunta
+        </a>
+      </div>
+    </div>
+
+    <section class="question" v-for="(question, $index) in questions">
+      <strong>[[ $index + 1 ]].</strong> [[ question.title ]] <br>
+      <div class="field has-addons">
+        <div class="control" style="width: 100%">
+          <input class="input" v-model="question.newAnswer.content" placeholder="Respuesta..." @keyup.enter="addAnswer(question)">
+        </div>
+        <div class="control">
+          <a class="button is-info" @click="addAnswer(question)">
+            Agregar respuesta
+          </a>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" v-model="question.newAnswer.is_right">
+            Es la respuesta correcta
+          </label>
+        </div>
+      </div>
+
+      <section class="answers">
+        <strong>Respuestas:</strong>
+        <div v-for="answer in question.answers">
+          <span>[[ answer.content ]] [[ answer.is_right ? '(correcta)': '' ]]</span><br>
+          <textarea v-if="answer.is_right" v-model="question.complement" placeholder="Complemento de la respuesta (opcional)">
+            
+          </textarea>
+        </div>
+      </section>
+    </section>
+
+
+    <hr>
+    <div class="field is-grouped">
+      <div class="control">
+        <button type="button" class="button is-link" @click="saveQuiz" :disabled="saving">[[ saving ? 'Guardando...' : 'Guardar' ]]</button>
+      </div>
+      <div class="control">
+        <router-link :to="{ name: 'home' }" :disabled="saving">Cancelar</router-link>
+      </div>
+    </div>
+  </form>
+
+</div>
+

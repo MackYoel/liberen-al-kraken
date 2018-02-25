@@ -7,6 +7,7 @@ class Question(models.Model):
 
     title = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    complement = models.TextField(null=True, blank=True)
 
     tags = TaggableManager(blank=True)
 
