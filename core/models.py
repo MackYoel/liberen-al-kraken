@@ -11,6 +11,9 @@ class Question(models.Model):
 
     tags = TaggableManager(blank=True)
 
+    class Meta:
+        ordering = ['?']
+
     def __str__(self):
         return self.title[:20]
 
@@ -20,6 +23,9 @@ class Answer(models.Model):
     content = models.TextField()
     is_right = models.BooleanField(default=False)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['?']
 
     def __str__(self):
         return self.content[:20]
