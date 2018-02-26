@@ -1,12 +1,11 @@
 <div>
-	<h1 class="title intro-title text-center">
-    Nuevo Quiz 😁
-  </h1>
-  <div class="container">
-  <br>
-
-  <form>
+  <div style="position: fixed;left: 1em;right: 1em; top: 0;background-color: #fff;z-index: 2;border-bottom: 2px solid #6e67da; padding-bottom: 1em">
+    <h1 class="title intro-title text-center" style="padding-top: 1em">
+      Nuevo Quiz 😁
+    </h1>
+    <br>
     <strong class="has-text-danger">[[ this.errors ]]</strong>
+    
     <div class="field">
       <label class="label">Nombre</label>
       <div class="control">
@@ -14,8 +13,7 @@
       </div>
     </div>
 
-    <hr>
-
+    <label class="label">Pregunta, recuerda que puedes agregar las que desees</label>
     <div class="field has-addons">
       <div class="control" style="width: 100%">
         <input class="input" v-model="newQuestion.title" placeholder="Pregunta..." @keyup.enter="addQuestion">
@@ -26,9 +24,13 @@
         </a>
       </div>
     </div>
+  </div>
 
+  <div style="padding-top: 18em">
     <section class="question" v-for="(question, $index) in questions">
-      <strong>[[ $index + 1 ]].</strong> [[ question.title ]] <br>
+      <button class="delete" style="float: right;background-color: #fd4a4a" @click="removeQuestion($index)"></button>
+      <strong style="color: #6e67da">Pregunta # [[ $index + 1 ]]:</strong> [[ question.title ]] <br>
+      <br>
       <div class="field has-addons">
         <div class="control" style="width: 100%">
           <input class="input" v-model="question.newAnswer.content" placeholder="Respuesta..." @keyup.enter="addAnswer(question)">
@@ -69,7 +71,6 @@
         <router-link :to="{ name: 'home' }" :disabled="saving">Cancelar</router-link>
       </div>
     </div>
-  </form>
+  </div>
 
 </div>
-

@@ -51,6 +51,10 @@ const QuizAddView = Vue.component('QuizAddView', {
         this.errors = err.body
         console.log('this.errors:', this.errors)
       })
+    },
+
+    removeQuestion: function (index) {
+      this.questions.splice(index, 1)
     }
 
   }
