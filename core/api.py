@@ -5,7 +5,7 @@ from . import models, serializers
 
 
 class TestViewSet(viewsets.ModelViewSet):
-    queryset = models.Test.objects.all()
+    queryset = models.Test.objects.all().order_by('-id')
     serializer_class = serializers.TestSerializer
 
 
