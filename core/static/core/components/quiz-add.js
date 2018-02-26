@@ -19,6 +19,7 @@ const QuizAddView = Vue.component('QuizAddView', {
       }
     }
   },
+
   mounted: function () {
     this.resetData()
   },
@@ -56,7 +57,6 @@ const QuizAddView = Vue.component('QuizAddView', {
     removeQuestion: function (index) {
       this.questions.splice(index, 1)
     }
-
   }
 
 })

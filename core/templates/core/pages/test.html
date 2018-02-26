@@ -33,7 +33,7 @@
       <a v-if="!finished & answerExists" class="button is-primary is-rounded" v-on:click="nextQuestion">Siguiente</a>
 
 	  	<a v-if="finished" class="button is-info is-active" href="/">Regresar a la lista de tests</a>
-	  	<a v-if="finished" class="button is-info is-warning" @click="location.reload()">Esto no puede quedar así!</a>
+	  	<a v-if="finished" class="button is-info is-warning" @click="resetData">Esto no puede quedar así!</a>
   	</template>
   </template>
   <template v-else>

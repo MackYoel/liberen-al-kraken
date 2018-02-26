@@ -5,7 +5,6 @@ const TestView = Vue.component('TestView', {
   	return {
       answer: {},
       test: {},
-      response: {},
       questions: [],
       errors: 0,
       questionsIndex: 0,
@@ -14,6 +13,7 @@ const TestView = Vue.component('TestView', {
       finished: false
   	}
   },
+
   mounted: function () {
   	this.fetchTest()
   },
@@ -51,8 +51,15 @@ const TestView = Vue.component('TestView', {
         this.answer = answer
         if (!this.answer.is_right) { this.errors += 1 }
       }
-    }
+    },
 
+    resetData: function () {
+      this.answer = {}
+      this.errors = 0
+      this.questionsIndex = 0
+      this.isActive = true
+      this.finished = false
+    }
   },
   computed: {
     currentQuestion: function () {
