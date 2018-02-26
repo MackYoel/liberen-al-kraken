@@ -1,7 +1,7 @@
 <div>
+  <a v-if="finished || !isActive" class="button is-info small" href="/#/"><- Regresar a la lista de Quiz</a>
 	<h1 class="title intro-title text-center">
-    [[ test.name ]] 😁 <a class="button is-primary" v-if="!isActive && questions.length" @click="isActive=true">Quiero intentarlo!</a>
-    <a v-if="finished || !isActive" class="button is-info is-active" href="/#/">Regresar a la lista de Quiz</a>
+    [[ test.name ]] 😁
   </h1>
   <div class="container">
   <br>
@@ -10,6 +10,9 @@
   	Cargando...
   </template>
   <template v-else-if="questions.length">
+    <div class="has-text-centered">
+      <a class="button is-primary" v-if="!isActive && questions.length" @click="isActive=true">Quiero intentarlo!</a>
+    </div>
   	<template v-if="isActive">
   		<article class="message is-primary">
 			  <div class="message-body">
@@ -29,9 +32,10 @@
         <p>[[ _answer.content ]]</p>
       </div>
       <br>
-
-      <a v-if="!finished & answerExists" class="button is-primary is-rounded" v-on:click="nextQuestion">Siguiente</a>
-	  	<a v-if="finished" class="button is-info is-warning" @click="resetData">Esto no puede quedar así!</a>
+      <div class="has-text-centered">
+        <a v-if="!finished & answerExists" class="button is-primary is-rounded" v-on:click="nextQuestion">Siguiente</a>
+        <a v-if="finished" class="button is-info is-warning" @click="resetData">Esto no puede quedar así!</a>
+      </div>
   	</template>
   </template>
   <template v-else>
