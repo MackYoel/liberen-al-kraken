@@ -1,7 +1,7 @@
 <div>
 	<h1 class="title intro-title text-center">
     [[ test.name ]] 😁 <a class="button is-primary" v-if="!isActive && questions.length" @click="isActive=true">Quiero intentarlo!</a>
-    <a v-if="finished" class="button is-info is-active" v-if="!isActive" href="/#/">Regresar a la lista de Quiz</a>
+    <a v-if="finished || !isActive" class="button is-info is-active" href="/#/">Regresar a la lista de Quiz</a>
   </h1>
   <div class="container">
   <br>
@@ -31,8 +31,6 @@
       <br>
 
       <a v-if="!finished & answerExists" class="button is-primary is-rounded" v-on:click="nextQuestion">Siguiente</a>
-
-	  	<a v-if="finished" class="button is-info is-active" href="/">Regresar a la lista de tests</a>
 	  	<a v-if="finished" class="button is-info is-warning" @click="resetData">Esto no puede quedar así!</a>
   	</template>
   </template>
